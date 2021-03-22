@@ -30,7 +30,7 @@ class BooksController < ApplicationController
         authors = Author.where(id: authors_ids)
         @book.authors << authors
       end
-      redirect_to book_path(@book), notice: "Book created"
+      redirect_to books_path, notice: "Book created"
     else
       render 'new'
     end
