@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h1>Authors</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Date of Birth</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @authors.each do |author| %>
+    <tr>
+      <th scope="row"><%= author.id %></th>
+      <td><%= author.first_name %></td>
+      <td><%= author.last_name %></td>
+      <td><%= author.date_of_birth %></td>
+      <td>
+        <span><%= link_to 'Show', author %></span>
+        <span><%= link_to 'Edit', edit_author_path(author) %></span>
+        <span><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Author', new_author_path %>
