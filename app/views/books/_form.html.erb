@@ -17,9 +17,7 @@
   </div>
   <div class="form-group">
     <%= form.label :authors %>
-    <%#= form.select(:author_ids, Author.all.collect {|p| [ p.first_name, p.id ] }, { :prompt => "Please select"}, { :multiple => true, :size => 5 }) %>
     <%= select_tag :author_ids, options_for_select(Author.pluck(:first_name, :id), selected: form.object.authors.pluck(:first_name, :id)), {multiple: true, class: 'form-control'} %>
-    <%#= collection_select(:author, :author_ids, Author.all, :id, :first_name, {:prompt => true, :multiple=>true }) %>
   </div>
 
   <div class="actions">

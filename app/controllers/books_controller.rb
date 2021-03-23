@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.all
+    @books = Book.includes(:authors)
   end
 
   # GET /books/1 or /books/1.json
@@ -34,16 +34,6 @@ class BooksController < ApplicationController
     else
       render 'new'
     end
-
-    # respond_to do |format|
-    #   if @book.save
-    #     format.html { redirect_to @book, notice: "Book was successfully created." }
-    #     format.json { render :show, status: :created, location: @book }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @book.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /books/1 or /books/1.json
@@ -61,19 +51,10 @@ class BooksController < ApplicationController
       else
         @book.authors.clear
       end
-      redirect_to @book, notice: "Book was successfully updated."
+      redirect_to books_path, notice: "Book was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
-    # respond_to do |format|
-    #   if @book.update(book_params)
-    #     format.html { redirect_to @book, notice: "Book was successfully updated." }
-    #     format.json { render :show, status: :ok, location: @book }
-    #   else
-    #     format.html { render :edit, status: :unprocessable_entity }
-    #     format.json { render json: @book.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # DELETE /books/1 or /books/1.json
